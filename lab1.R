@@ -134,3 +134,15 @@ ggplot(brfss, aes(x=Height, y = sqrt(Weight), color=Sex)) +
 brfss2010 <- brfss[brfss$Year == "2010", ]
 ggplot(brfss2010, aes(x=sqrt(Weight), fill=Sex)) +
     geom_density(alpha=.25)
+# Using alpha to make points semi-transparent
+sp <- ggplot(brfss, aes(x=Height, y=sqrt(Weight)))
+sp + geom_point(alpha=.4)
+sp + geom_point() + stat_smooth(method=lm)
+sps <- ggplot(brfss, aes(x=Height, y=sqrt(Weight), colour=Sex)) +
+    geom_point() +
+    scale_colour_brewer(palette="Set1")
+sps + geom_smooth(method="lm")
+
+# Session info
+#-----------------------------------------------------#
+sessionInfo()
