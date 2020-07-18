@@ -8,15 +8,12 @@ The material introduces or refreshes your knowledge of `R`, and walks through so
 * [Credits](#Credits)
 
 ## Project
-This project has multiple objectives:
-1. Set up Node.js application
-2. Check health application - Ping Pong connection
-3. Mockup data - response: all the mockup data
-4. Database connection - response: all the data from both tables
-5. SQL calls - response: specific row (SELECT WHERE)
-6. SQL calls - response: combine data from tables (SELECT INNER JOIN)
-7. Using Testframework - asynchronous testing
-8. Documentation of APIs
+1. Introduction to R – Gain confidence working with base R commands and data structures.
+2. Introduction to tidy R – Gain confidence working with base R commands and data structures.
+3. Starting an anlysis – Finding R and Bioconductor packages and resources to start an analysis.
+4. Data Representations – Learn the essentials of Bioconductor data structures
+5. Annotation – Learn about Bioconductor resources for gene and genome annotation.
+6. Lecture Activities – short challenges that came up during the morning lectures.
 
 ## Technologies
 Project is created with:
