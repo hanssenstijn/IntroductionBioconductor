@@ -30,7 +30,7 @@ Project is created with:
 * airway-read-counts.csv
 * symgo.csv
 
-[Datasets](https://www.bioconductor.org/help/course-materials/2019/CSAMA/lab-1-intro-to-r-bioc.html)
+[Datasets](https://github.com/Bioconductor/CSAMA/tree/2019/lab/1-monday/01-intro-to-r-bioc)
 
 ## Credits
 Bioconductor starting point:
