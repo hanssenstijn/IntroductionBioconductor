@@ -65,5 +65,8 @@ g2 <- head(gr, n=2)
 union(g, g2)
 setdiff(g, g2)
 
-# Load packages
+# Biostrings for DNA sequences
 #-----------------------------------------------------#
+data(phiX174Phage)
+phiX174Phage
+m <- consensusMatrix(phiX174Phage)[1:4,]
