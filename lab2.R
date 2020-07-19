@@ -42,12 +42,20 @@ sp
 c(sp[[1]], sp[[2]])
 gr[2:3]
 
-# Load packages
+# Subset GRanges
+#-----------------------------------------------------#
+gr[2:3]
+gr[2:3, "GC"]
+singles <- split(gr, names(gr))
+grMod <- gr
+grMod[2] <- singles[[1]]
+head(grMod, n=3)
+
+
+# Basic interval operations for GRanges objects
 #-----------------------------------------------------#
 
 
-# Load packages
-#-----------------------------------------------------#
 
 
 # Load packages
