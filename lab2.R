@@ -54,13 +54,16 @@ head(grMod, n=3)
 
 # Basic interval operations for GRanges objects
 #-----------------------------------------------------#
+g <- gr[1:3]
+g <- append(g, singles[[10]])
+start(g)
+flank(g, 10)
 
-
-
-
-# Load packages
+# Interval set operations for GRanges objects
 #-----------------------------------------------------#
-
+g2 <- head(gr, n=2)
+union(g, g2)
+setdiff(g, g2)
 
 # Load packages
 #-----------------------------------------------------#
