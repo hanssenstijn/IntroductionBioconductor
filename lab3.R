@@ -80,5 +80,6 @@ vignette(package="Biostrings")
 vignette("BiostringsQuickOverview")
 mapply(substr, polymorphic, polymorphic, MoreArgs=list(x=phiX174Phage))
 
-# Sequence analysis
+# Session Info
 #-----------------------------------------------------#
+sessionInfo()
