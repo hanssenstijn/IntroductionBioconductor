@@ -70,3 +70,15 @@ setdiff(g, g2)
 data(phiX174Phage)
 phiX174Phage
 m <- consensusMatrix(phiX174Phage)[1:4,]
+polymorphic <- which(colSums(m != 0) > 1)
+m[, polymorphic]
+# DNAStringSet methods
+methods(class=class(phiX174Phage))
+class(phiX174Phage)
+?DNAStringSet
+vignette(package="Biostrings")
+vignette("BiostringsQuickOverview")
+mapply(substr, polymorphic, polymorphic, MoreArgs=list(x=phiX174Phage))
+
+# Sequence analysis
+#-----------------------------------------------------#
