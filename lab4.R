@@ -7,16 +7,21 @@ rm(list = ls())
 library(Biostrings)
 library(GenomicRanges)
 library(IRanges)
+library(Rsamtools)
+library(GenomicAlignments)
 if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
 BiocManager::install("BSgenome.Hsapiens.UCSC.hg38")
 BiocManager::install("airway")
 BiocManager::install("SingleCellExperiment")
+BiocManager::install("RNAseqData.HNRNPC.bam.chr14")
 
 library(BSgenome.Hsapiens.UCSC.hg38)
 library(airway)
 library(SingleCellExperiment)
+library('RNAseqData.HNRNPC.bam.chr14')
+
 # Import data
 #-----------------------------------------------------#
 data(phiX174Phage)
@@ -108,3 +113,26 @@ sce <- readRDS(fl)
 
 # GenomicRanges
 #-----------------------------------------------------#
+gr <- GRanges(c("chr1:10-14:+", "chr1:20-24:+", "chr1:22-26:+"))
+shift(gr, 1) 
+range(gr) 
+reduce(gr)   
+coverage(gr)
+setdiff(range(gr), gr)    
+# SNP overlap genes
+genes <- GRanges(c("chr1:30-40:+", "chr1:60-70:-"))
+snps <- GRanges(c("chr1:35", "chr1:60", "chr1:45"))
+countOverlaps(snps, genes) > 0
+# Gene nearest to the regulatory region
+reg <- GRanges(c("chr1:50-55", "chr1:75-80"))
+nearest(reg, genes)
+precede(reg, genes)
+
+# Aligned reads
+#-----------------------------------------------------#
+roi <- GRanges("chr14", IRanges(19653773, width=1)) 
+bf <- BamFile(RNAseqData.HNRNPC.bam.chr14_BAMFILES[[1]], asMates=TRUE)
+paln <- readGAlignmentsList(bf)
+j <- summarizeJunctions(paln, with.revmap=TRUE)
+j_overlap <- j[j %over% roi]
+paln[j_overlap$revmap[[1]]]
