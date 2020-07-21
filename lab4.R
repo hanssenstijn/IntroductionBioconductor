@@ -11,8 +11,12 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
 BiocManager::install("BSgenome.Hsapiens.UCSC.hg38")
-library(BSgenome.Hsapiens.UCSC.hg38)
+BiocManager::install("airway")
+BiocManager::install("SingleCellExperiment")
 
+library(BSgenome.Hsapiens.UCSC.hg38)
+library(airway)
+library(SingleCellExperiment)
 # Import data
 #-----------------------------------------------------#
 data(phiX174Phage)
@@ -83,3 +87,24 @@ mcols(cds) <- DataFrame(
 )
 mcols(cds, use.names = FALSE)
 mcols(cds[1:3], use.names = FALSE)
+
+# Experiment
+#-----------------------------------------------------#
+data(airway)
+airway
+
+# Inspect data
+#-----------------------------------------------------#
+colData(airway)
+airway[ , airway$dex == "untrt"]
+# Assay() matrix-like container where rows represent featurs of interest
+colSums(assay(airway))
+
+# Mouse brain data set (rds)
+#-----------------------------------------------------#
+url <- "https://scrnaseq-public-datasets.s3.amazonaws.com/scater-objects/manno_mouse.rds"
+fl <- BiocFileCache::bfcrpath(rnames = url)
+sce <- readRDS(fl)
+
+# GenomicRanges
+#-----------------------------------------------------#
