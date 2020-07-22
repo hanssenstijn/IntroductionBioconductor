@@ -16,11 +16,17 @@ BiocManager::install("BSgenome.Hsapiens.UCSC.hg38")
 BiocManager::install("airway")
 BiocManager::install("SingleCellExperiment")
 BiocManager::install("RNAseqData.HNRNPC.bam.chr14")
+BiocManager::install("TxDb.Hsapiens.UCSC.hg19.knownGene")
+BiocManager::install("VariantAnnotation")
 
 library(BSgenome.Hsapiens.UCSC.hg38)
 library(airway)
 library(SingleCellExperiment)
 library('RNAseqData.HNRNPC.bam.chr14')
+library(TxDb.Hsapiens.UCSC.hg19.knownGene)
+library(VariantAnnotation)
+library(RNAseqData.HNRNPC.bam.chr14)
+library(BiocParallel)
 
 # Import data
 #-----------------------------------------------------#
@@ -136,3 +142,32 @@ paln <- readGAlignmentsList(bf)
 j <- summarizeJunctions(paln, with.revmap=TRUE)
 j_overlap <- j[j %over% roi]
 paln[j_overlap$revmap[[1]]]
+
+# Variants
+#-----------------------------------------------------#
+fl <- system.file("extdata", "chr22.vcf.gz", package="VariantAnnotation")
+vcf <- readVcf(fl, "hg19")
+seqlevels(vcf) <- "chr22"
+coding <- locateVariants(rowRanges(vcf),
+                         TxDb.Hsapiens.UCSC.hg19.knownGene,
+                         CodingVariants())
+head(coding)
+
+# Count the number of reads overlapping exons grouped into genes
+#-----------------------------------------------------#
+# Identify the regions of interest
+exByGn <- exonsBy(TxDb.Hsapiens.UCSC.hg19.knownGene, "gene")
+## only chromosome 14
+seqlevels(exByGn, pruning.mode="coarse") = "chr14"
+# sample BAM files
+length(RNAseqData.HNRNPC.bam.chr14_BAMFILES)
+# Summarize overlaps
+olaps <- summarizeOverlaps(exByGn, RNAseqData.HNRNPC.bam.chr14_BAMFILES)
+olaps
+head(assay(olaps))
+colSums(assay(olaps))  
+plot(sum(width(olaps)), rowMeans(assay(olaps)), log="xy")
+
+# Session info
+#-----------------------------------------------------#
+sessionInfo()
