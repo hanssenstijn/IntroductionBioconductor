@@ -3,6 +3,9 @@ title: "introductionRmarkdown"
 author: "Stijn Hanssen"
 date: "22/07/2020"
 output: html_document
+bibliography: references.bib
+params:
+    data: "hawaii"
 ---
 
 ## R Markdown
@@ -10,7 +13,8 @@ output: html_document
 ```{r, include=FALSE}
 # Install Python environment 
 library(reticulate)
-reticulate::install_miniconda()
+# reticulate::install_miniconda()
+library(knitr)
 ```
 
 ## Chunck Options
@@ -38,15 +42,45 @@ R Markdown will always
 * apply relevant text formatting to the results
 
 
-`r y = x+x `
+`r y <- x+x `
 
 ```{r}
+# y <- x+x (y = incline code, x = include=FALSE)
 y
 ```
 
 ## Code languages
 
 ```{python}
+# Python code
 print('"Isn\'t," they said.')
 ```
 
+## Parameters
+Parameters are declared using the params field within the YAML header of the document (at the top; params: data: "...").
+
+To access a parameter in code, call params$<parameter name>
+
+```{r}
+# render("5-parameters.Rmd", params = list(data = "aleutians"))
+# data(list = params$data)
+```
+
+## Tables
+
+```{r, echo=FALSE, results= 'asis'}
+kable(mtcars[1:5,], caption = "A knitr kable.")
+```
+
+## Markdown Basics
+
+
+### Header 3
+- *italics*
+- **bold**
+- `code`
+- superscript^2^
+- ~~strikethrough~~
+- [links](rmarkdown.rstudio.com)
+- Latex equations $E = mc^{2}$
+- And bibliographies [@R-base]

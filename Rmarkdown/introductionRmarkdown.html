@@ -386,13 +386,137 @@ summary {
 <div id="inline-code" class="section level2">
 <h2>Inline code</h2>
 <p>R Markdown will always * display the results of inline code, but not the code * apply relevant text formatting to the results</p>
-<pre class="r"><code>y</code></pre>
+<pre class="r"><code># y &lt;- x+x (y = incline code, x = include=FALSE)
+y</code></pre>
 <pre><code>## [1] 20</code></pre>
 </div>
 <div id="code-languages" class="section level2">
 <h2>Code languages</h2>
-<pre class="python"><code>print(&#39;&quot;Isn\&#39;t,&quot; they said.&#39;)</code></pre>
+<pre class="python"><code># Python code
+print(&#39;&quot;Isn\&#39;t,&quot; they said.&#39;)</code></pre>
 <pre><code>## &quot;Isn&#39;t,&quot; they said.</code></pre>
+</div>
+<div id="parameters" class="section level2">
+<h2>Parameters</h2>
+<p>Parameters are declared using the params field within the YAML header of the document (at the top; params: data: “…”).</p>
+<p>To access a parameter in code, call params$<parameter name></p>
+<pre class="r"><code># render(&quot;5-parameters.Rmd&quot;, params = list(data = &quot;aleutians&quot;))
+# data(list = params$data)</code></pre>
+</div>
+<div id="tables" class="section level2">
+<h2>Tables</h2>
+<table>
+<caption>A knitr kable.</caption>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="right">mpg</th>
+<th align="right">cyl</th>
+<th align="right">disp</th>
+<th align="right">hp</th>
+<th align="right">drat</th>
+<th align="right">wt</th>
+<th align="right">qsec</th>
+<th align="right">vs</th>
+<th align="right">am</th>
+<th align="right">gear</th>
+<th align="right">carb</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Mazda RX4</td>
+<td align="right">21.0</td>
+<td align="right">6</td>
+<td align="right">160</td>
+<td align="right">110</td>
+<td align="right">3.90</td>
+<td align="right">2.620</td>
+<td align="right">16.46</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">4</td>
+</tr>
+<tr class="even">
+<td align="left">Mazda RX4 Wag</td>
+<td align="right">21.0</td>
+<td align="right">6</td>
+<td align="right">160</td>
+<td align="right">110</td>
+<td align="right">3.90</td>
+<td align="right">2.875</td>
+<td align="right">17.02</td>
+<td align="right">0</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="left">Datsun 710</td>
+<td align="right">22.8</td>
+<td align="right">4</td>
+<td align="right">108</td>
+<td align="right">93</td>
+<td align="right">3.85</td>
+<td align="right">2.320</td>
+<td align="right">18.61</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">4</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Hornet 4 Drive</td>
+<td align="right">21.4</td>
+<td align="right">6</td>
+<td align="right">258</td>
+<td align="right">110</td>
+<td align="right">3.08</td>
+<td align="right">3.215</td>
+<td align="right">19.44</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Hornet Sportabout</td>
+<td align="right">18.7</td>
+<td align="right">8</td>
+<td align="right">360</td>
+<td align="right">175</td>
+<td align="right">3.15</td>
+<td align="right">3.440</td>
+<td align="right">17.02</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="markdown-basics" class="section level2">
+<h2>Markdown Basics</h2>
+<div id="header-3" class="section level3">
+<h3>Header 3</h3>
+<ul>
+<li><em>italics</em></li>
+<li><strong>bold</strong></li>
+<li><code>code</code></li>
+<li>superscript<sup>2</sup></li>
+<li><del>strikethrough</del></li>
+<li><a href="rmarkdown.rstudio.com">links</a></li>
+<li>Latex equations <span class="math inline">\(E = mc^{2}\)</span></li>
+<li>And bibliographies <span class="citation">(R Core Team 2019)</span></li>
+</ul>
+<div id="refs" class="references">
+<div id="ref-R-base">
+<p>R Core Team. 2019. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org">https://www.R-project.org</a>.</p>
+</div>
+</div>
+</div>
 </div>
 
 
