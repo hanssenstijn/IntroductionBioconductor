@@ -29,7 +29,7 @@ library(knitr)
 
 * fig.cap = "..." adds a caption to graphical results.
 
-To set global options that apply to every chunk in your file, call knitr::opts_chunk\$set in a code chunk. Knitr will treat each option that you pass to knitr::opts_chunk\$set as a global default that can be overwritten in individual chunk headers
+To set global options that apply to every chunk in your file, call knitr::opts_chunk\$set in a code chunk. Knitr will treat each option that you pass to knitr::opts_chunk\$set as a global default that can be overwritten in individual chunk headers.
 
 ```{r, include=FALSE}
 x <- 10
@@ -37,7 +37,7 @@ x <- 10
 
 ## Inline code
 
-R Markdown will always
+R Markdown will always:
 * display the results of inline code, but not the code
 * apply relevant text formatting to the results
 
@@ -74,8 +74,6 @@ kable(mtcars[1:5,], caption = "A knitr kable.")
 
 ## Markdown Basics
 
-
-### Header 3
 - *italics*
 - **bold**
 - `code`
@@ -84,3 +82,12 @@ kable(mtcars[1:5,], caption = "A knitr kable.")
 - [links](rmarkdown.rstudio.com)
 - Latex equations $E = mc^{2}$
 - And bibliographies [@R-base]
+
+## Output Formats
+
+You can create many types of output from a single .Rmd file. R Markdown has built in support for **HTML, PDF, MS_Word, ODT, RTF, Markdown, and Github flavored Markdown documents; Beamer, slidy.js, ioslides, and reveal.js slideshows; and websites, dashboards, books, handouts, package vignettes, and Shiny apps**.
+
+Use define setting section to change the output, each output can include params.
+
+
+
