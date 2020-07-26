@@ -170,3 +170,8 @@ ggplot(d, aes(x=condition, y=count)) +
     geom_point(position=position_jitter(w=0.1,h=0)) + 
     scale_y_log10(breaks=c(25,100,400))
 mcols(res)$description
+
+# Count data transformations
+#-----------------------------------------------------#
+# Extract the matrix of normalized values
+vsd <- vst(dds, blind=FALSE)
